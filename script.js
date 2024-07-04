@@ -86,7 +86,7 @@ clearButton.addEventListener('click',(e)=>{
 saveButton.addEventListener('click',()=>{
     localStorage.setItem('canvasContents',canvas.toDataURL());
     let link = document.createElement('a');
-    link.download = 'my-canvas.png';
+    link.download = 'mySignature.png';
 
     link.href=canvas.toDataURL();
     link.click();
