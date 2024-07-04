@@ -46,7 +46,7 @@ canvas.addEventListener('mouseup', () => {
 
 
 canvas.addEventListener('touchstart',(event)=>{
-    isDrawing(true);
+    isDrawing = true;
     const touch = event.touches[0];
      lastX = touch.clientX - canvas.offsetLeft;
      lastY = touch.clientY - canvas.offsetTop;
