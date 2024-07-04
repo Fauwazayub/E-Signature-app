@@ -44,6 +44,37 @@ canvas.addEventListener('mouseup', () => {
     isDrawing = false;
 });
 
+
+canvas.addEventListener('touchstart',(event)=>{
+    isDrawing(true);
+    const touch = event.touches[0];
+     lastX = touch.clientX - canvas.offsetLeft;
+     lastY = touch.clientY - canvas.offsetTop;
+     event.preventDefault();
+})
+
+canvas.addEventListener('touchmove',(event)=>{
+    if(isDrawing){
+        const touch = event.touches[0];
+        const currentX = touch.clientX - canvas.offsetLeft;
+        const currentY = touch.clientY - canvas.offsetTop;
+
+        ctx.beginPath();
+        ctx.moveTo(lastX,lastY);
+        ctx.lineTo(currentX, currentY);
+        ctx.stroke();
+
+        lastX = currentX;
+        lastY = currentY;
+        event.preventDefault();
+
+    }
+});
+
+canvas.addEventListener('touchend',()=>{
+    isDrawing = false;
+})
+
 fontSizePicker.addEventListener('change',(e)=>{
     ctx.lineWidth = e.target.value;
 });
